@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class FeedCard extends Component {
     render() {
-        // console.log(this.props.publicIdeas)
+        console.log(this.props.publicIdeas)
         return (
             <div className="card">
                 <span className="pin">📌</span>

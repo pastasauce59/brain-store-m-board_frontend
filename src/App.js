@@ -106,7 +106,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.ideas)
+    console.log(this.state.ideas)
     // console.log(this.state.currentUser)
     // console.log(this.state.currentUserIdeas)
     // console.log(this.state.editIdeaID)
@@ -118,7 +118,8 @@ class App extends Component {
       <Router>
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
       {/* <div> */}
-        {/* <h1>Brain-store-m Board</h1> */}
+        {/* <h1>To begin please Signup 👆 or Login 👆 to start!</h1> */}
+        {this.state.loggedIn ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
         <Switch>
         <Route exact path='/login'
         render={routerProps => 

@@ -31,7 +31,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { username, password, age } = this.state;
+    const { username, password } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -54,9 +54,6 @@ class Signup extends Component {
           value={password}
           onChange={this.handleChange}
         />
-
-        {/* <label>Age</label>
-        <input type="age" name="age" value={age} onChange={this.handleChange} /> */}
 
         <input class="btn btn-primary mr-1" type="submit" value="Signup" />
       </form>

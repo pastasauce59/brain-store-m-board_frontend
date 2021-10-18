@@ -28,7 +28,7 @@ class NavBar extends Component {
         // </Link> */}
         {/* <br></br>
         <p></p> */}
-        {this.props.loggedIn === false ? (
+        {!localStorage.token ? (
           <Link to="/login">
             <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
             Login
@@ -41,7 +41,7 @@ class NavBar extends Component {
         )}
         {/* <br></br>
         <p></p> */}
-        {this.props.loggedIn ? (
+        {localStorage.token ? (
           <Link to="/yourideas">
             {" "}
             <i class="fa fa-calendar-alt icon-calendar lnr lnr-calendar-full ion-ios-calendar-outline"></i>{" "}

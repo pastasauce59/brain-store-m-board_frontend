@@ -21,22 +21,33 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:3000/ideas")
-      .then((res) => res.json())
-    //   .then(IdeasArr => this.setState({ ideas: IdeasArr }));
-    // console.log("mounted");
-    .then(IdeasArr => this.setState({ideas: IdeasArr.filter(idea => idea.private === false)}))
-  }
-
-  loggedIn = (user) => {
-    this.setState({
-      currentUser: user,
-      currentUserIdeas: user.ideas,
-      loggedIn: !this.state.loggedIn
+    fetch("http://127.0.0.1:3000/ideas", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.token}`
+      }
     })
+      .then((res) => res.json())
+      .then(ideasArr => this.setState({ideas: ideasArr.filter(idea => idea.private === false)}))
+  }
+  
+
+  loggedIn = (res) => {
+    localStorage.token = res.token
+    if (localStorage.token)
+    {this.setState({
+      currentUser: res.user,
+      currentUserIdeas: res.user.ideas,
+      loggedIn: !this.state.loggedIn
+    })}
+    else {
+      console.log("error")
+    }
+    // localStorage.token = res.token
   }
 
   handleLogout = () => {
+    localStorage.clear()
     this.setState({
       loggedIn: !this.state.loggedIn,
       currentUser: "",
@@ -106,7 +117,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.ideas)
+    // console.log(this.state.ideas)
     // console.log(this.state.currentUser)
     // console.log(this.state.currentUserIdeas)
     // console.log(this.state.editIdeaID)
@@ -117,9 +128,9 @@ class App extends Component {
     return (
       <Router>
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
-      {/* <div> */}
-        {/* <h1>To begin please Signup 👆 or Login 👆 to start!</h1> */}
-        {this.state.loggedIn ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
+        
+        {localStorage.token ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
+        
         <Switch>
         <Route exact path='/login'
         render={routerProps => 

@@ -13,9 +13,6 @@ class IdeaContainer extends Component {
                 </div>
                 {this.props.notification === "" ? null : <span className='notification'>{this.props.notification}</span>}
                 <br></br>
-                
-                {/* {this.props.currentUser.id > 0 ?
-                this.props.currentUserIdeas.map(idea => <IdeaCard key={idea.id} ideas={idea} /> ) : null} */}
 
                 {this.props.currentUserIdeas.map(idea =>
                     this.props.editIdeaID === idea.id ? <IdeaForm key={idea.id} ideas={idea} editIdea={this.props.editIdea}

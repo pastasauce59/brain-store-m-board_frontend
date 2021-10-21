@@ -21,14 +21,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:3000/ideas", {
+    // fetch("http://127.0.0.1:3000/ideas", {
+    //   method: "GET",
+    //   headers: {
+    //     "Authorization": `Bearer ${localStorage.token}`
+    //   }
+    // })
+    //   .then((res) => res.json())
+    //   .then(ideasArr => this.setState({ideas: ideasArr.filter(idea => idea.private === false)}))
+
+    fetch("http://127.0.0.1:3000/public_ideas", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
       }
     })
       .then((res) => res.json())
-      .then(ideasArr => this.setState({ideas: ideasArr.filter(idea => idea.private === false)}))
+      .then(ideasArr => this.setState({ideas: ideasArr}))
   }
   
 

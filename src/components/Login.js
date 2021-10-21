@@ -33,6 +33,7 @@ class Login extends Component {
               this.props.routerProps.history.push("/yourideas");
             }
             console.log("~ successful login ~")
+            console.log(res)
           });
       };
     

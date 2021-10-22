@@ -29,20 +29,51 @@ class App extends Component {
     // })
     //   .then((res) => res.json())
     //   .then(ideasArr => this.setState({ideas: ideasArr.filter(idea => idea.private === false)}))
-
-    fetch("http://127.0.0.1:3000/public_ideas", {
+      if (localStorage.token) {
+      fetch("http://127.0.0.1:3000/public_ideas", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
       }
     })
       .then((res) => res.json())
-      .then(ideasArr => this.setState({ideas: ideasArr}))
+      .then(ideasArr => this.setState({
+        ideas: ideasArr,
+        // currentUser: JSON.parse(localStorage.getItem("user")),
+        // currentUserIdeas: JSON.parse(localStorage.getItem())
+      }))
+      this.stillThere()
+    }
+    else {
+      fetch("http://127.0.0.1:3000/public_ideas", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.token}`
+      }
+    })
+      .then((res) => res.json())
+      .then(ideasArr => this.setState({
+        ideas: ideasArr,
+        // currentUser: JSON.parse(localStorage.getItem("user")),
+        // currentUserIdeas: JSON.parse(localStorage.getItem())
+      }))
+    }
   }
+
+  stillThere = () => {
+    let parsedUser = JSON.parse(localStorage.getItem("user"))
+    console.log(parsedUser, "im here")
+    this.setState({
+      currentUser: parsedUser,
+      currentUserIdeas: parsedUser.ideas
+    })
+  }
+
   
 
   loggedIn = (res) => {
     localStorage.token = res.token
+    localStorage.setItem("user", JSON.stringify(res.user))
     if (localStorage.token)
     {this.setState({
       currentUser: res.user,
@@ -65,6 +96,8 @@ class App extends Component {
   };
 
   addIdea = () => {
+    let update = JSON.parse(localStorage.user)
+
     let newIdea = {
       title: "",
       desc: "",
@@ -80,19 +113,26 @@ class App extends Component {
       body: JSON.stringify(newIdea),
     })
     .then(res => res.json())
-    .then(newIdeaObj => this.setState({
+    .then( (newIdeaObj) => { 
+      this.setState({
       currentUserIdeas: [...this.state.currentUserIdeas, newIdeaObj],
       editIdeaID: newIdeaObj.id
-    }))
+    })
+      update.ideas = [...update.ideas, newIdeaObj]
+      localStorage.setItem("user", JSON.stringify(update))
+    })
   }
 
   editIdea = (editedIdea) => {
+    let update = JSON.parse(localStorage.user)
     this.setState({currentUserIdeas: this.state.currentUserIdeas.map(idea => idea.id === editedIdea.id ? editedIdea : idea ),
     notification: "Your changes are saved ✅",
     ideas: this.state.ideas.map(idea => idea.id === editedIdea.id ? editedIdea : idea),
     editIdeaID: null
     })
     // console.log(edits)
+    update.ideas = this.state.currentUserIdeas.map(idea => idea.id === editedIdea.id ? editedIdea : idea )
+    localStorage.setItem("user", JSON.stringify(update))
   }
 
   click2Edit = (idea) => {
@@ -104,7 +144,8 @@ class App extends Component {
   }
 
   deleteIdea = (idea) => {
-    console.log(idea.id)
+    // console.log(idea.id)
+    let update = JSON.parse(localStorage.user)
     let userIdeasUpdated = this.state.currentUserIdeas.filter(usrIdea => usrIdea.id !== idea.id)
     let ideasUpdated = this.state.ideas.filter(publicIdea => publicIdea.id !== idea.id)
     fetch(`http://localhost:3000/ideas/${idea.id}`, {
@@ -114,15 +155,23 @@ class App extends Component {
     .then(this.setState({
       currentUserIdeas: userIdeasUpdated,
       ideas: ideasUpdated
-    }))
+    }),
+      update.ideas = userIdeasUpdated,
+      localStorage.setItem("user", JSON.stringify(update))
+    )
   }
 
   publicIdea = (idea) => {
-  this.setState({
-    currentUserIdeas: this.state.currentUserIdeas.map(oldIdea => oldIdea.id === idea.id ? idea : oldIdea ),
-    ideas: idea.private === false ? [...this.state.ideas, idea] : this.state.ideas.filter(pubIdea => pubIdea.id !== idea.id)
-  })
-  console.log(idea)
+    let update = JSON.parse(localStorage.user)
+    let userIdeasPublicPrivate = this.state.currentUserIdeas.map(oldIdea => oldIdea.id === idea.id ? idea : oldIdea )
+    let ideasPublicPrivate = idea.private === false ? [...this.state.ideas, idea] : this.state.ideas.filter(pubIdea => pubIdea.id !== idea.id)
+    this.setState({
+    currentUserIdeas: userIdeasPublicPrivate,
+    ideas: ideasPublicPrivate
+    })
+    console.log(idea)
+    update.ideas = userIdeasPublicPrivate
+    localStorage.setItem("user", JSON.stringify(update))
   }
 
   render() {
@@ -137,7 +186,7 @@ class App extends Component {
     return (
       <Router>
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
-        
+
         {localStorage.token ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
         
         <Switch>

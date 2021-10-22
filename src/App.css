@@ -5,6 +5,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  padding-top: 90px;
 }
 
 .yours {
@@ -20,6 +21,8 @@ div.card {
   float: left;
   font-size: 12px;
   text-align: left;
+  /* display: flex;
+  flex-wrap: wrap; */
   /* color: #4E4E4E; */
 }
 
@@ -72,6 +75,15 @@ textarea {
   text-align: center;
 }
 
+div.links {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index:1;
+  display:flex;
+  /* flex-wrap:wrap; */
+}
+
 div.links a {
   /* color: #4E4E4E;
   background-color: #A2D5F2; */
@@ -109,7 +121,6 @@ div.links a:hover {
   padding: 5px;
   border: #4E4E4E;
   border-style: solid;
-  
 }
 
 label {
@@ -135,5 +146,6 @@ h1.public, h1.your-ideas, h1.signup, h1.login {
 
 .title {
   font-weight: bolder;
+  margin-right: 15px;
 }
 

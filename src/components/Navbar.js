@@ -12,6 +12,7 @@ class NavBar extends Component {
         <p></p> */}
         <h1 className="title">Brain-store-m Board</h1>
         {this.props.currentUser.id > 0 ? <h3>Hello, {this.props.currentUser.username}!</h3> : null  }
+        
         <Link to="/sharedideas">
           <i class="fa fa-home icon-home lnr lnr-home ion-ios-home-outline"></i>{" "}
           Shared Ideas

@@ -175,7 +175,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.ideas)
+    console.log(this.state.ideas)
     // console.log(this.state.currentUser)
     // console.log(this.state.currentUserIdeas)
     // console.log(this.state.editIdeaID)
@@ -188,7 +188,7 @@ class App extends Component {
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
 
         {localStorage.token ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
-        
+
         <Switch>
         <Route exact path='/login'
         render={routerProps => 

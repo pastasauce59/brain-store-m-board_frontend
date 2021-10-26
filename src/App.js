@@ -187,8 +187,6 @@ class App extends Component {
       <Router>
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
 
-        {localStorage.token ? null : <h1>To begin please Signup 👆 or Login 👆 to start!</h1>}
-
         <Switch>
         <Route exact path='/login'
         render={routerProps => 

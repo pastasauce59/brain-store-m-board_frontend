@@ -5,7 +5,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  padding-top: 90px;
+  padding-top: 135px;
 }
 
 .yours {
@@ -142,6 +142,13 @@ label {
 
 h1.public, h1.your-ideas, h1.signup, h1.login {
   background: #FF7E67;
+}
+
+h1.no-login {
+  background: yellow;
+  border-color: #4E4E4E;
+  border-style:solid;
+  margin: 5px;
 }
 
 .title {

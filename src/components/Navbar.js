@@ -19,7 +19,7 @@ class NavBar extends Component {
         </Link>
         {/* <br></br>
         <p></p> */}
-        {this.props.loggedIn === false ? <Link to="/signup">
+        {!localStorage.token ? <Link to="/signup">
           <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
           Signup
         </Link> : null }
@@ -49,6 +49,8 @@ class NavBar extends Component {
             Your Ideas
           </Link>
         ) : null}
+        <br></br>
+        {localStorage.token ? null : <h1 className="no-login">⬅️ Please login or sign-up to begin!</h1>}
         <br></br>
       </div>
     );

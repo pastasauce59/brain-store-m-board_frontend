@@ -4,9 +4,9 @@ Brain-store-m Board is an application to store brainstormed ideas akin to virtua
 
 This is Brain-Store-M Board's frontend repository. Please go [here](https://github.com/pastasauce59/brain-store-m-board_backend) for the backend repository.
 
-<img width="1152" alt="Screen Shot 2021-10-13 at 6 25 28 PM" src="https://user-images.githubusercontent.com/79714290/137220980-6e1eed9a-1d5f-485f-93e7-01c4790f38a1.png">
+<img width="1152" alt="Screen Shot 2021-10-25 at 8 57 11 PM" src="https://user-images.githubusercontent.com/79714290/138790873-98ef790c-0db7-4f1c-a6a5-40995c8a190a.png">
 
-<img width="1152" alt="Screen Shot 2021-10-13 at 3 05 22 PM" src="https://user-images.githubusercontent.com/79714290/137198220-28afcf5c-2f52-4d0f-86f4-823ca6f94d7b.png">
+<img width="1151" alt="Screen Shot 2021-10-25 at 8 57 24 PM" src="https://user-images.githubusercontent.com/79714290/138790878-551c2e6c-62ad-42dc-a121-69b49f56a2b6.png">
 
 ## Technology Used ⚙️:
 - React frontend

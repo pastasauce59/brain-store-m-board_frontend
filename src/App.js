@@ -21,14 +21,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // fetch("http://127.0.0.1:3000/ideas", {
-    //   method: "GET",
-    //   headers: {
-    //     "Authorization": `Bearer ${localStorage.token}`
-    //   }
-    // })
-    //   .then((res) => res.json())
-    //   .then(ideasArr => this.setState({ideas: ideasArr.filter(idea => idea.private === false)}))
       if (localStorage.token) {
       fetch("http://127.0.0.1:3000/public_ideas", {
       method: "GET",
@@ -38,9 +30,7 @@ class App extends Component {
     })
       .then((res) => res.json())
       .then(ideasArr => this.setState({
-        ideas: ideasArr,
-        // currentUser: JSON.parse(localStorage.getItem("user")),
-        // currentUserIdeas: JSON.parse(localStorage.getItem())
+        ideas: ideasArr
       }))
       this.stillThere()
     }
@@ -53,19 +43,16 @@ class App extends Component {
     })
       .then((res) => res.json())
       .then(ideasArr => this.setState({
-        ideas: ideasArr,
-        // currentUser: JSON.parse(localStorage.getItem("user")),
-        // currentUserIdeas: JSON.parse(localStorage.getItem())
+        ideas: ideasArr
       }))
     }
   }
 
   stillThere = () => {
     let parsedUser = JSON.parse(localStorage.getItem("user"))
-    console.log(parsedUser, "im here")
-    this.setState({
-      currentUser: parsedUser,
-      currentUserIdeas: parsedUser.ideas
+      this.setState({
+        currentUser: parsedUser,
+        currentUserIdeas: parsedUser.ideas
     })
   }
 
@@ -75,15 +62,14 @@ class App extends Component {
     localStorage.token = res.token
     localStorage.setItem("user", JSON.stringify(res.user))
     if (localStorage.token)
-    {this.setState({
-      currentUser: res.user,
-      currentUserIdeas: res.user.ideas,
-      loggedIn: !this.state.loggedIn
-    })}
+      {this.setState({
+        currentUser: res.user,
+        currentUserIdeas: res.user.ideas,
+        loggedIn: !this.state.loggedIn
+      })}
     else {
-      console.log("error")
+      null
     }
-    // localStorage.token = res.token
   }
 
   handleLogout = () => {
@@ -115,8 +101,8 @@ class App extends Component {
     .then(res => res.json())
     .then( (newIdeaObj) => { 
       this.setState({
-      currentUserIdeas: [...this.state.currentUserIdeas, newIdeaObj],
-      editIdeaID: newIdeaObj.id
+        currentUserIdeas: [...this.state.currentUserIdeas, newIdeaObj],
+        editIdeaID: newIdeaObj.id
     })
       update.ideas = [...update.ideas, newIdeaObj]
       localStorage.setItem("user", JSON.stringify(update))
@@ -125,12 +111,12 @@ class App extends Component {
 
   editIdea = (editedIdea) => {
     let update = JSON.parse(localStorage.user)
-    this.setState({currentUserIdeas: this.state.currentUserIdeas.map(idea => idea.id === editedIdea.id ? editedIdea : idea ),
-    notification: "Your changes are saved ✅",
-    ideas: this.state.ideas.map(idea => idea.id === editedIdea.id ? editedIdea : idea),
-    editIdeaID: null
+    this.setState({currentUserIdeas: 
+      this.state.currentUserIdeas.map(idea => idea.id === editedIdea.id ? editedIdea : idea ),
+      notification: "Your changes are saved ✅",
+      ideas: this.state.ideas.map(idea => idea.id === editedIdea.id ? editedIdea : idea),
+      editIdeaID: null
     })
-    // console.log(edits)
     update.ideas = this.state.currentUserIdeas.map(idea => idea.id === editedIdea.id ? editedIdea : idea )
     localStorage.setItem("user", JSON.stringify(update))
   }
@@ -144,7 +130,6 @@ class App extends Component {
   }
 
   deleteIdea = (idea) => {
-    // console.log(idea.id)
     let update = JSON.parse(localStorage.user)
     let userIdeasUpdated = this.state.currentUserIdeas.filter(usrIdea => usrIdea.id !== idea.id)
     let ideasUpdated = this.state.ideas.filter(publicIdea => publicIdea.id !== idea.id)
@@ -166,46 +151,36 @@ class App extends Component {
     let userIdeasPublicPrivate = this.state.currentUserIdeas.map(oldIdea => oldIdea.id === idea.id ? idea : oldIdea )
     let ideasPublicPrivate = idea.private === false ? [...this.state.ideas, idea] : this.state.ideas.filter(pubIdea => pubIdea.id !== idea.id)
     this.setState({
-    currentUserIdeas: userIdeasPublicPrivate,
-    ideas: ideasPublicPrivate
+      currentUserIdeas: userIdeasPublicPrivate,
+      ideas: ideasPublicPrivate
     })
-    console.log(idea)
     update.ideas = userIdeasPublicPrivate
     localStorage.setItem("user", JSON.stringify(update))
   }
 
   render() {
-    console.log(this.state.ideas)
-    // console.log(this.state.currentUser)
-    // console.log(this.state.currentUserIdeas)
-    // console.log(this.state.editIdeaID)
-
-    // let notPrivate = this.state.ideas.filter(idea => idea.private === false)
-    // console.log(notPrivate)
-
     return (
       <Router>
         <Navbar currentUser={this.state.currentUser} loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
 
         <Switch>
-        <Route exact path='/login'
-        render={routerProps => 
-          <Login routerProps={routerProps} loggedIn={this.loggedIn} /> } />
-        <Route exact path="/signup">
-          <Signup />
-        </Route>
-        <Route exact path='/sharedideas'>  
-        <FeedContainer publicIdeas={this.state.ideas} currentUser={this.state.currentUser}/>
-        </Route>
+          <Route exact path='/login'
+            render={routerProps => 
+            <Login routerProps={routerProps} loggedIn={this.loggedIn} /> } />
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path='/sharedideas'>  
+            <FeedContainer publicIdeas={this.state.ideas} currentUser={this.state.currentUser}/>
+          </Route>
 
-        <Route exact path='/yourideas'>
-        <IdeaContainer currentUser={this.state.currentUser} editIdeaID={this.state.editIdeaID}
-        currentUserIdeas={this.state.currentUserIdeas} addIdea={this.addIdea} editIdea={this.editIdea}
-        notification={this.state.notification} removeNotification={this.removeNotification}
-        click2Edit={this.click2Edit} deleteIdea={this.deleteIdea} publicIdea={this.publicIdea}/>
-        </Route> 
-      {/* </div> */}
-      </Switch>
+          <Route exact path='/yourideas'>
+            <IdeaContainer currentUser={this.state.currentUser} editIdeaID={this.state.editIdeaID}
+            currentUserIdeas={this.state.currentUserIdeas} addIdea={this.addIdea} editIdea={this.editIdea}
+            notification={this.state.notification} removeNotification={this.removeNotification}
+            click2Edit={this.click2Edit} deleteIdea={this.deleteIdea} publicIdea={this.publicIdea}/>
+          </Route> 
+        </Switch>
       </Router>
     );
   }

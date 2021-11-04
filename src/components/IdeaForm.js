@@ -35,8 +35,7 @@ class IdeaForm extends Component {
                     value={this.state.title} onChange={this.handleChange} />
                     <textarea className='input' name='desc' autoComplete="off" placeholder='Write Your Idea Here'
                     value={this.state.desc} onChange={this.handleChange} />
-                    </form>
-                
+                </form>    
             </div>
         );
     }

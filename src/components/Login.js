@@ -12,7 +12,7 @@ class Login extends Component {
     
       handleSubmit = (e) => {
         e.preventDefault();
-        // TODO: make a fetch request to sign up the current user
+        
         fetch("http://localhost:3000/login", {
           method: "POST",
           headers: {
@@ -21,7 +21,6 @@ class Login extends Component {
           body: JSON.stringify(this.state),
         })
           .then((res) => res.json())
-          // then set that user in state in our App component
           .then((res) => {
             if (res.error) {
               alert(res.error);
@@ -32,8 +31,6 @@ class Login extends Component {
               this.setState({ username: "", password: "" });
               this.props.routerProps.history.push("/yourideas");
             }
-            console.log("~ successful login ~")
-            console.log(res)
           });
       };
     

@@ -1,7 +1,6 @@
 body {
   text-align: center;
   background-image: url(https://c1.wallpaperflare.com/preview/401/127/806/lightbulb-concept-cork-bulletin.jpg);
-  /* color: white */
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -13,7 +12,6 @@ body {
 }
 
 div.card {
-  /* height: 150px; */
   max-height: fit-content;
   width: 150px;
   margin: 10px;
@@ -21,22 +19,7 @@ div.card {
   float: left;
   font-size: 12px;
   text-align: left;
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* color: #4E4E4E; */
 }
-
-/* .ideaButton {
-  background: tomato;
-  color: white;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  margin-right: 10px;
-  margin-left: 10px;
-  padding: 10px;
-  font-family: Courgette;
-} */
 
 .input {
   border: 0;
@@ -60,7 +43,6 @@ textarea {
 
 .delete {
   visibility: hidden;
-  /* float: right; */
   text-align: right;
   margin: 3px;
   margin-right: 5px;
@@ -81,40 +63,25 @@ div.links {
   width: 100%;
   z-index:1;
   display:flex;
-  /* flex-wrap:wrap; */
 }
 
 div.links a {
-  /* color: #4E4E4E;
-  background-color: #A2D5F2; */
   color: #FAFAFA;
   background-color: #07689F;
-  /* position: fixed; */
   font-size: 30px;
-  /* text-shadow: -1px 0 #f7ecd4, 0 1px #f7ecd4, 1px 0 #f7ecd4, 0 -1px #f7ecd4; */
-  /* background-color: #A2D5F2; */
   text-decoration: none;
-  /* text-align: right; */
   padding: 12px;
   font-family: Courgette;
   border: #4E4E4E;
-  border-style: solid;
-  /* border-width:thick; */
-  
-
-  
+  border-style: solid;  
 }
 
 div.links a:hover {
-  /* color: #FAFAFA;
-  background-color: #07689F; */
   color: #FAFAFA;
   background-color: #A2D5F2;
-  /* border-color: #07689F; */
 }
 
 .links {
-  /* text-align: center; */
   background-color: #A2D5F2;
   position:sticky;
   overflow: auto;

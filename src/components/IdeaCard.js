@@ -15,27 +15,17 @@ class IdeaCard extends Component {
     }
 
     handlePrivate = () => {
-        // this.setState({checked: !this.state.checked})
-       
-        let privatePublic = {
+       let privatePublic = {
             private: !this.props.ideas.private
         }
         
-        console.log(privatePublic)
-        // this.state.checked === false ? 
-        // let pp = {
-        //     private: this.state.checked
-        // }
         fetch(`http://localhost:3000/ideas/${this.props.ideas.id}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(privatePublic)
         })
         .then(res => res.json())
-        .then(edited => 
-            this.props.publicIdea(edited)
-            // console.log(edited)
-            )
+        .then(edited => this.props.publicIdea(edited))
     }
 
     render() { 
@@ -46,18 +36,13 @@ class IdeaCard extends Component {
                 <h4 onClick={this.handleClick}>{this.props.ideas.title}</h4>
                 <p onClick={this.handleClick}>{this.props.ideas.desc}</p>
                 {this.props.ideas.private === true ? 
-                <label className="switch" onClick={this.handlePrivate}>Private: 
-                <input type="checkbox" defaultChecked></input>
-                <span class="slider round"></span>
-                </label> : <label className="switch" onClick={this.handlePrivate}>Private: 
-                    <input type="checkbox" ></input>
-                    <span class="slider round"></span>
-                </label>
-                }
-                {/* <label className="switch" onClick={this.handlePrivate}>Private: 
+                    <label className="switch" onClick={this.handlePrivate}>Private: 
                     <input type="checkbox" defaultChecked></input>
                     <span class="slider round"></span>
-                </label> */}
+                    </label> : <label className="switch" onClick={this.handlePrivate}>Private: 
+                    <input type="checkbox" ></input>
+                    <span class="slider round"></span>
+                    </label>}
             </div>
         );
     }

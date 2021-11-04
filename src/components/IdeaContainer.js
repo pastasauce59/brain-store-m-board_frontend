@@ -4,12 +4,11 @@ import IdeaForm from './IdeaForm';
 
 class IdeaContainer extends Component {
     render() {
-        // console.log(this.props.currentUser)
         return (
             <div>
                 <h1 className="your-ideas">Your Ideas</h1>
                 <div>
-                <button type="button" class="btn btn-primary mr-1"  onClick={this.props.addIdea}>Create New Idea</button>
+                <button type="button" class="btn btn-primary mr-1" onClick={this.props.addIdea}>Create New Idea</button>
                 </div>
                 {this.props.notification === "" ? null : <span className='notification'>{this.props.notification}</span>}
                 <br></br>

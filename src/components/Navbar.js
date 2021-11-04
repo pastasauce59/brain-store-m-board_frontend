@@ -5,11 +5,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="links">
-        {/* <Link to="/yourideas">
-          <i class="fas fa-shopping-cart"></i> Home
-        </Link>
-        <br></br>
-        <p></p> */}
+      
         <h1 className="title">Brain-store-m Board</h1>
         {this.props.currentUser.id > 0 ? <h3>Hello, {this.props.currentUser.username}!</h3> : null  }
         
@@ -17,18 +13,11 @@ class NavBar extends Component {
           <i class="fa fa-home icon-home lnr lnr-home ion-ios-home-outline"></i>{" "}
           Shared Ideas
         </Link>
-        {/* <br></br>
-        <p></p> */}
         {!localStorage.token ? <Link to="/signup">
           <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
           Signup
         </Link> : null }
-        {/* // <Link to="/signup">
-        //   <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
-        //   Signup
-        // </Link> */}
-        {/* <br></br>
-        <p></p> */}
+      
         {!localStorage.token ? (
           <Link to="/login">
             <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
@@ -40,8 +29,7 @@ class NavBar extends Component {
             Logout
           </Link>
         )}
-        {/* <br></br>
-        <p></p> */}
+        
         {localStorage.token ? (
           <Link to="/yourideas">
             {" "}

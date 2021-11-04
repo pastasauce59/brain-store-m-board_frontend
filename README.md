@@ -12,7 +12,7 @@ This is Brain-Store-M Board's frontend repository. Please go [here](https://gith
 - React frontend
 - Rails API backend
 - bootstrap and custom CSS for styling
-- Coming soon! Utlizing JWT for user authenticaion
+- Utlized JWT for user authenticaion/authorization and persist data on refresh
 
 ## Installation 💻:
 - Fork and clone this repository as well as the [backend repository](https://github.com/pastasauce59/brain-store-m-board_backend) onto your local environment.

@@ -17,6 +17,14 @@ class NavBar extends Component {
           <i class="fa fa-user icon-user lnr lnr-user ion-ios-contact-outline"></i>{" "}
           Signup
         </Link> : null }
+
+        {localStorage.token ? (
+          <Link to="/yourideas">
+            {" "}
+            <i class="fa fa-calendar-alt icon-calendar lnr lnr-calendar-full ion-ios-calendar-outline"></i>{" "}
+            Your Ideas
+          </Link>
+        ) : null}
       
         {!localStorage.token ? (
           <Link to="/login">
@@ -30,13 +38,13 @@ class NavBar extends Component {
           </Link>
         )}
         
-        {localStorage.token ? (
+        {/* {localStorage.token ? (
           <Link to="/yourideas">
             {" "}
             <i class="fa fa-calendar-alt icon-calendar lnr lnr-calendar-full ion-ios-calendar-outline"></i>{" "}
             Your Ideas
           </Link>
-        ) : null}
+        ) : null} */}
         <br></br>
         {localStorage.token ? null : <h1 className="no-login">⬅️ Please login or sign-up to begin!</h1>}
         <br></br>

@@ -68,7 +68,7 @@ class App extends Component {
         loggedIn: !this.state.loggedIn
       })}
     else {
-      null
+      return
     }
   }
 

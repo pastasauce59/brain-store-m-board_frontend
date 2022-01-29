@@ -10,9 +10,9 @@ class FeedCard extends Component {
                 <span className="brain">🧠</span>: null}
                 <h4>{this.props.publicIdeas.title}</h4>
                 <p>{this.props.publicIdeas.desc}</p>
-                <h5>Idea by: {this.props.publicIdeas.user.username}</h5>
+                <h6>Idea by: {this.props.publicIdeas.user.username}</h6>
                 {this.props.publicIdeas.user_id === this.props.currentUser.id ? 
-                <h5 className="yours">(This is your idea!)</h5> : null}
+                <h6 className="yours">This idea is yours!</h6> : null}
             </div>
         );
     }

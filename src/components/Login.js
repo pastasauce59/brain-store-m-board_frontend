@@ -38,8 +38,11 @@ class Login extends Component {
         const { username, password} = this.state;
     
         return (
-          <form onSubmit={this.handleSubmit}>
+          <div>
             <h1 className="login">Login</h1>
+            <div className='login-signup'>
+          <form onSubmit={this.handleSubmit}>
+            {/* <h1 className="login">Login</h1> */}
     
             <label>Username: </label>
             <input
@@ -61,6 +64,8 @@ class Login extends Component {
     
             <input class="btn btn-primary mr-1" type="submit" value="Login" />
           </form>
+          </div>
+          </div>
         );
       }
 }

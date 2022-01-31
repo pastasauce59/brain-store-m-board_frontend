@@ -144,13 +144,11 @@ h1.no-login {
 }
 
 .login-signup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-direction: row;
-  /* margin: 100px; */
+  display:inline-block;
+  text-align: center;
   background-color: ivory;
-  height: 200px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
+  box-shadow: 5px 5px 20px;
+  border-radius: 5px;
 }

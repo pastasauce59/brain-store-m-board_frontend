@@ -25,7 +25,7 @@ class Signup extends Component {
           alert(res.error);
         } else {
           alert("Thanks for signing up");
-          window.location.href = "https://modest-ramanujan-2ed9a4.netlify.app/login";
+          window.location.pathname = "/login";
         }
       });
   };

@@ -24,7 +24,7 @@ class Login extends Component {
           .then((res) => {
             if (res.error) {
               alert(res.error);
-              window.location.href = "https://modest-ramanujan-2ed9a4.netlify.app/signup";
+              window.location.pathname = "/signup";
             } else {
               this.props.loggedIn(res);
               alert("Welcome Back");

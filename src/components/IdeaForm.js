@@ -17,7 +17,7 @@ class IdeaForm extends Component {
             title: this.state.title,
             desc: this.state.desc
         }
-        fetch(`http://localhost:3000/ideas/${this.props.ideas.id}`, {
+        fetch(`https://hidden-springs-67853.herokuapp.com/ideas/${this.props.ideas.id}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(ideaEdits),

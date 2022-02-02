@@ -19,7 +19,7 @@ class IdeaCard extends Component {
             private: !this.props.ideas.private
         }
         
-        fetch(`http://localhost:3000/ideas/${this.props.ideas.id}`, {
+        fetch(`https://hidden-springs-67853.herokuapp.com/ideas/${this.props.ideas.id}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(privatePublic)

@@ -22,7 +22,7 @@ class App extends Component {
 
   componentDidMount() {
       if (localStorage.token) {
-      fetch("http://127.0.0.1:3000/public_ideas", {
+      fetch("https://hidden-springs-67853.herokuapp.com/public_ideas", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
@@ -35,7 +35,7 @@ class App extends Component {
       this.stillThere()
     }
     else {
-      fetch("http://127.0.0.1:3000/public_ideas", {
+      fetch("https://hidden-springs-67853.herokuapp.com/public_ideas", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
@@ -91,7 +91,7 @@ class App extends Component {
       user_id: this.state.currentUser.id,
     }
 
-    fetch("http://localhost:3000/ideas", {
+    fetch("https://hidden-springs-67853.herokuapp.com/ideas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +133,7 @@ class App extends Component {
     let update = JSON.parse(localStorage.user)
     let userIdeasUpdated = this.state.currentUserIdeas.filter(usrIdea => usrIdea.id !== idea.id)
     let ideasUpdated = this.state.ideas.filter(publicIdea => publicIdea.id !== idea.id)
-    fetch(`http://localhost:3000/ideas/${idea.id}`, {
+    fetch(`https://hidden-springs-67853.herokuapp.com/ideas/${idea.id}`, {
       method: "DELETE",
     })
     .then(res => res.json())

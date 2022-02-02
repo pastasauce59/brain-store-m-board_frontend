@@ -12,7 +12,7 @@ class Signup extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/users", {
+    fetch("https://hidden-springs-67853.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ class Signup extends Component {
           alert(res.error);
         } else {
           alert("Thanks for signing up");
-          window.location.href = "http://localhost:3001/login";
+          window.location.href = "https://modest-ramanujan-2ed9a4.netlify.app/login";
         }
       });
   };

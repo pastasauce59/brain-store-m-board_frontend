@@ -13,7 +13,7 @@ class Login extends Component {
       handleSubmit = (e) => {
         e.preventDefault();
         
-        fetch("http://localhost:3000/login", {
+        fetch("https://hidden-springs-67853.herokuapp.com/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -24,7 +24,7 @@ class Login extends Component {
           .then((res) => {
             if (res.error) {
               alert(res.error);
-              window.location.href = "http://localhost:3001/signup";
+              window.location.href = "https://modest-ramanujan-2ed9a4.netlify.app/signup";
             } else {
               this.props.loggedIn(res);
               alert("Welcome Back");

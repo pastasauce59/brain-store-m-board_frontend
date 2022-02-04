@@ -37,14 +37,6 @@ class NavBar extends Component {
             Logout
           </Link>
         )}
-        
-        {/* {localStorage.token ? (
-          <Link to="/yourideas">
-            {" "}
-            <i class="fa fa-calendar-alt icon-calendar lnr lnr-calendar-full ion-ios-calendar-outline"></i>{" "}
-            Your Ideas
-          </Link>
-        ) : null} */}
         <br></br>
         {localStorage.token ? null : <h1 className="no-login">⬅️ Please login or sign-up to begin!</h1>}
         <br></br>

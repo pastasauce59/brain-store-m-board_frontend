@@ -38,8 +38,6 @@ class Signup extends Component {
         <h1 className="signup">Signup</h1>
         <div className='login-signup'>
       <form onSubmit={this.handleSubmit}>
-        {/* <h1 className="signup">Signup</h1> */}
-
         <label>Username</label>
         <input
           type="text"

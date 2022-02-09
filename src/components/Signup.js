@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API_ROOT } from "../apriRoot";
 
 class Signup extends Component {
   state = {
@@ -12,7 +13,7 @@ class Signup extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://hidden-springs-67853.herokuapp.com/users", {
+    fetch(`${API_ROOT}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -37,9 +37,9 @@ class NavBar extends Component {
             Logout
           </Link>
         )}
-        <br></br>
+        
         {localStorage.token ? null : <h1 className="no-login">⬅️ Please login or sign-up to begin!</h1>}
-        <br></br>
+        
       </div>
     );
   }

@@ -7,6 +7,7 @@ import FeedContainer from './components/FeedContainer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import "./custom-theme.scss";
+import { API_ROOT } from './apriRoot';
 
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
 
   componentDidMount() {
       if (localStorage.token) {
-      fetch("https://hidden-springs-67853.herokuapp.com/public_ideas", {
+      fetch(`${API_ROOT}/public_ideas`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
@@ -35,7 +36,7 @@ class App extends Component {
       this.stillThere()
     }
     else {
-      fetch("https://hidden-springs-67853.herokuapp.com/public_ideas", {
+      fetch(`${API_ROOT}/public_ideas`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
@@ -91,7 +92,7 @@ class App extends Component {
       user_id: this.state.currentUser.id,
     }
 
-    fetch("https://hidden-springs-67853.herokuapp.com/ideas", {
+    fetch(`${API_ROOT}/ideas`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +134,7 @@ class App extends Component {
     let update = JSON.parse(localStorage.user)
     let userIdeasUpdated = this.state.currentUserIdeas.filter(usrIdea => usrIdea.id !== idea.id)
     let ideasUpdated = this.state.ideas.filter(publicIdea => publicIdea.id !== idea.id)
-    fetch(`https://hidden-springs-67853.herokuapp.com/ideas/${idea.id}`, {
+    fetch(`${API_ROOT}/ideas/${idea.id}`, {
       method: "DELETE",
     })
     .then(res => res.json())

@@ -71,6 +71,8 @@ div.links {
   width: 100%;
   z-index:1;
   display:flex;
+
+  height: 135px;
 }
 
 div.links a {
@@ -81,7 +83,11 @@ div.links a {
   padding: 12px;
   font-family: Courgette;
   border: #4E4E4E;
-  border-style: solid;  
+  border-style: solid;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 div.links a:hover {

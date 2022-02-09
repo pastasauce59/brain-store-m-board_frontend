@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { API_ROOT } from '../apriRoot';
 
 class IdeaForm extends Component {
     
@@ -17,7 +18,7 @@ class IdeaForm extends Component {
             title: this.state.title,
             desc: this.state.desc
         }
-        fetch(`https://hidden-springs-67853.herokuapp.com/ideas/${this.props.ideas.id}`, {
+        fetch(`${API_ROOT}/ideas/${this.props.ideas.id}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(ideaEdits),

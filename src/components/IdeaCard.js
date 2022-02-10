@@ -37,11 +37,12 @@ class IdeaCard extends Component {
                 <p onClick={this.handleClick}>{this.props.ideas.desc}</p>
                 {this.props.ideas.private === true ? 
                     <label className="switch" onClick={this.handlePrivate}>Private: 
-                    <input type="checkbox" defaultChecked></input>
-                    <span class="slider round"></span>
-                    </label> : <label className="switch" onClick={this.handlePrivate}>Private: 
-                    <input type="checkbox" ></input>
-                    <span class="slider round"></span>
+                        <input type="checkbox" defaultChecked></input>
+                        <span class="slider round"></span>
+                    </label> : 
+                    <label className="switch" onClick={this.handlePrivate}>Private: 
+                        <input type="checkbox" ></input>
+                        <span class="slider round"></span>
                     </label>}
             </div>
         );

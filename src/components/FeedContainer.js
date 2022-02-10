@@ -6,10 +6,10 @@ class FeedContainer extends Component {
         return (
             <div className='feed'>
                 <h1 className="public">Publicly Shared Ideas (To help you get some more ideas 💡)</h1>
-            <div className='feed-container'>
-                {this.props.publicIdeas.map(idea => 
+                <div className='feed-container'>
+                    {this.props.publicIdeas.map(idea => 
                     <FeedCard key={idea.id} publicIdeas={idea} currentUser={this.props.currentUser} />)}
-            </div>
+                </div>
             </div>
         );
     }

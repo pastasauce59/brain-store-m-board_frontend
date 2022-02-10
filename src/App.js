@@ -9,7 +9,6 @@ import Signup from './components/Signup';
 import "./custom-theme.scss";
 import { API_ROOT } from './apriRoot';
 
-
 class App extends Component {
 
   state = {
@@ -180,7 +179,19 @@ class App extends Component {
             currentUserIdeas={this.state.currentUserIdeas} addIdea={this.addIdea} editIdea={this.editIdea}
             notification={this.state.notification} removeNotification={this.removeNotification}
             click2Edit={this.click2Edit} deleteIdea={this.deleteIdea} publicIdea={this.publicIdea}/>
-          </Route> 
+          </Route>
+          <div className='welcome-container'>
+            <div className="card">
+                <span className="pin">📌</span>
+                <span className="brain">🧠</span>
+                <h4>Welcome!</h4>
+                <p>Please login or sign up above to start saving your ideas
+                    to a note like this one.
+                </p>
+                <h6>Idea by: Mike</h6>
+                <h6 className="yours">Thanks!</h6>
+            </div>
+          </div> 
         </Switch>
       </Router>
     );

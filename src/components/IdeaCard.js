@@ -11,7 +11,10 @@ class IdeaCard extends Component {
     }
 
     handleDelete = () => {
-        this.props.deleteIdea(this.props.ideas)
+        let confirmBox = window.confirm("Are you sure you want to delete this idea?")
+            if (confirmBox === true){
+                this.props.deleteIdea(this.props.ideas)
+            }
     }
 
     handlePrivate = () => {
